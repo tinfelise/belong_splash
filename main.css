@@ -21,7 +21,7 @@ body {
 	max-width:632px;
 	margin:0;
 	font-size: 16px;
-	padding:2em;
+	padding:3em;
 	line-height: 1.1875em;
 	color: #fff;
 	font-family: 'Montserrat', sans-serif;
@@ -147,23 +147,26 @@ select:-webkit-autofill:focus {
 
 
 
-@media only screen and (max-width: 700px) {
+/*@media only screen and (max-width: 700px) {
 	body {
 		padding-left: env(safe-area-inset-left);
     	padding-right: env(safe-area-inset-right);
 	}
-}
+}*/
 @media only screen and (max-width: 450px) {
 	form input[type='text'],
 	form input[type='submit'] + label {
 		width:100%;
 	}
+	form input[type='submit'] + label {
+		margin-top:2.5em;
+	}
 }
-@supports(padding: max(0px)) {
+/*@supports(padding: max(0px)) {
 	@media only screen and (max-width: 700px) {
 	    body {
 	        padding-left: max(1em, env(safe-area-inset-left));
 	        padding-right: max(1em, env(safe-area-inset-right));
 	    }
 	}
-}
+}*/
