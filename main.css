@@ -50,6 +50,7 @@ form input[type='text'] {
 	border-bottom: 1px solid #3EE4A9;
 	width:23em;
 	padding:.375em;
+	border-radius:0;
 }
 form input[type='text']::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 	color:inherit;
