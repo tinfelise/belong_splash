@@ -15,6 +15,7 @@
 	<img id='logo' src='logo.svg'/>
 	<form method="post" action="./Default" id="form1">
 		<input name="tbEmail" type="text" id="tbEmail" placeholder="Email" />
+		<div>Please enter a valid email.</div>
 		<input type="submit" name="btnSubmit" value="" id="btnSubmit" disabled />
 		<label id="btnSubmit-label" for="btnSubmit">Get notified</label>
 	</form>
@@ -25,30 +26,42 @@
 
 <!-- Libraries -->
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
-<script src='https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js'></script>
 
 <script>
+	function debounce(func, wait, immediate) {
+		var timeout;
+		return function() {
+			var context = this, args = arguments;
+			var later = function() {
+				timeout = null;
+				if (!immediate) func.apply(context, args);
+			};
+			var callNow = immediate && !timeout;
+			clearTimeout(timeout);
+			timeout = setTimeout(later, wait);
+			if (callNow) func.apply(context, args);
+		};
+	};
+	function isEmail(email) {
+	  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	  return regex.test(email);
+	};
+
 	$(document).ready(function(){
-		$("#form1").validate({
-			rules: {
-				tbEmail: {
-					// required: true,
-					email: true
-				}
-
-			},
-			messages: {
-				email: "Please enter a valid email address."
+		$('#tbEmail').on('keyup', debounce(function() {
+			if(isEmail($(this).val()))	{
+				$('#form1').removeClass('error');
+				$('#btnSubmit').removeAttr('disabled');
+			} else if ($(this).val().length == 0) {
+				$('#form1').removeClass('error');
+				$('#btnSubmit').attr('disabled',true);
+			} else {
+				$('#form1').addClass('error');
+				$('#btnSubmit').attr('disabled',true);
 			}
+		}, 500));
 
-		});
-
-		$("#tbEmail").on('keyup', function() {
-			if($("#form1").valid())	{
-				$("#btnSubmit").removeAttr("disabled");
-			}
-		});
-		$("#form1").on('submit', function() {
+		$('#form1').on('submit', function() {
 			$('#btnSubmit').toggleClass('checking');
 		});
 	});
