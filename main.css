@@ -95,7 +95,7 @@ form input[type='submit']:active + label{
 }
 form input[type='submit']:disabled + label {
 	background-color: #1FC78B;
-	opacity:.75;
+	opacity:.5;
 }
 form input[type='submit']:disabled:hover + label {
 	background-color: #1FC78B;
