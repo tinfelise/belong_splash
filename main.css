@@ -118,7 +118,11 @@ form input[type='submit'].success:hover + label {
 	background-color:#3EE4A9;
 }
 form input[type='submit'].checking + label:after {
-	content:'checking';
+	content: '';
+	background-image: url(spinner.svg);
+	background-repeat: no-repeat;
+	background-size: 1em;
+	background-position: center;
 }
 form input[type='submit'].success + label:after {
 	content:url('check2.svg');
