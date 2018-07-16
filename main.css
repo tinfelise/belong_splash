@@ -1,0 +1,148 @@
+html {
+	box-sizing: border-box;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%; 
+	margin:0;
+	padding:0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height:100vh;
+}
+*, 
+*:before, 
+*:after {
+	box-sizing: inherit;
+}
+body {
+	background-color: #325E77;
+	width:100%;
+	max-width:632px;
+	margin:0;
+	font-size: 16px;
+	padding:2em;
+	line-height: 1.1875em;
+	color: #fff;
+	font-family: 'Montserrat', sans-serif;
+}
+#logo {
+	width:100%;
+	margin-bottom:6.5em;
+}
+
+form {
+	text-align:center;
+}
+form input {
+	display:block;
+	margin:auto;
+	font-size: inherit;
+    line-height: inherit;
+    color:inherit;
+	border:none;
+	text-align:center;
+	outline:none;
+	font-family: inherit;
+}
+form input[type='text'] {
+	background:none;
+	border-bottom: 1px solid #3EE4A9;
+	width:23em;
+	padding:.375em;
+}
+form input[type='text']::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	color:inherit;
+}
+form input[type='text']::-moz-placeholder { /* Firefox 19+ */
+	color:inherit;
+}
+form input[type='text']:-ms-input-placeholder { /* IE 10+ */
+	color:inherit;
+}
+form input[type='text']:-moz-placeholder { /* Firefox 18- */
+	color:inherit;
+}
+form input[type='text'].error {
+	border-bottom-color: #F64747;
+}
+
+form label.error {
+	color:#F64747;
+	font-size:.75em;
+	float: left;
+	width: 100%;
+}
+form input[type='submit'] {
+	display: none;
+}
+form input[type='submit'] + label {
+	background-color:#3EE4A9;
+	border-radius: 6px;
+	padding: .8125em;
+	width:10em;
+	text-transform: uppercase;
+	margin:1.5em auto;
+	display:block;
+	position: relative;
+}
+form input[type='submit']:hover + label {
+	background-color: #1FC78B;
+}
+form input[type='submit']:active + label{
+	opacity:initial;
+}
+form input[type='submit']:disabled + label {
+	background-color: #1FC78B;
+	opacity:.75;
+}
+form input[type='submit']:disabled:hover + label {
+	background-color: #1FC78B;
+	/*opacity:.75;*/
+}
+form input[type='submit'] + label:after {
+	position:absolute;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	border-radius: inherit;
+	background-color: inherit;
+	padding: inherit;
+}
+form input[type='submit'].checking:hover + label,
+form input[type='submit'].success:hover + label {
+	background-color:#3EE4A9;
+}
+form input[type='submit'].checking + label:after {
+	content:'checking';
+}
+form input[type='submit'].success + label:after {
+	content:url('check2.svg');
+}
+
+
+
+
+
+
+@media only screen and (max-width: 700px) {
+	body {
+		padding-left: env(safe-area-inset-left);
+    	padding-right: env(safe-area-inset-right);
+	}
+}
+@media only screen and (max-width: 450px) {
+	form input[type='text'],
+	form input[type='submit'] + label {
+		width:100%;
+	}
+}
+@supports(padding: max(0px)) {
+	@media only screen and (max-width: 700px) {
+	    body {
+	        padding-left: max(1em, env(safe-area-inset-left));
+	        padding-right: max(1em, env(safe-area-inset-right));
+	    }
+	}
+}

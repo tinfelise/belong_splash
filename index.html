@@ -1,15 +1,55 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head><title>
-	Belong | Coming Soon
-</title></head>
+<head>
+	<!-- COMMON TAGS -->
+	<title>Belong | Coming Soon</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name='viewport' content='width=device-width, initial-scale=1, viewport-fit=cover'>
+	<!-- Styles -->
+	<link href="main.css" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+</head>
 <body>
-    <form method="post" action="./Default" id="form1">
-        <div>
-            <input name="tbEmail" type="text" id="tbEmail" placeholder="email" /><br />
-            <input type="submit" name="btnSubmit" value="Get Notified!" id="btnSubmit" />
-        </div>
-    </form>
+	<img id='logo' src='logo.svg'/>
+	<form method="post" action="./Default" id="form1">
+		<input name="tbEmail" type="text" id="tbEmail" placeholder="Email" />
+		<input type="submit" name="btnSubmit" value="" id="btnSubmit" disabled />
+		<label id="btnSubmit-label" for="btnSubmit">Get notified</label>
+	</form>
 </body>
 </html>
+
+
+
+<!-- Libraries -->
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js'></script>
+
+<script>
+	$(document).ready(function(){
+		$("#form1").validate({
+			rules: {
+				tbEmail: {
+					// required: true,
+					email: true
+				}
+
+			},
+			messages: {
+				email: "Please enter a valid email address."
+			}
+
+		});
+
+		$("#tbEmail").on('keyup', function() {
+			if($("#form1").valid())	{
+				$("#btnSubmit").removeAttr("disabled");
+			}
+		});
+		$("#form1").on('submit', function() {
+			$('#btnSubmit').toggleClass('checking');
+		});
+	});
+</script>
